@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=hi, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        h1 {
+            text-align: -webkit-center;
+            font-size: 48px;
+        }
+
+        form {
+            width: 230px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        div {
+            margin: 10px 0px 10px 0px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>hello world</h1>
+    <h1>Sign Up</h1>
+    <form action="#">
+        <label for="firstname">First Name</label>
+        <div>
+            <input type="text" name="firstname" id="firstname" required>
+        </div>
+        <label for="lastname">Last Name</label>
+        <div>
+            <input type="text" name="lastname" id="lastname" required>
+        </div>
+        <label for="email">Email</label>
+        <div>
+            <input type="email" id="email" required>
+        </div>
+        <label for="password">Password</label>
+        <div>
+            <input type="password" id="password" required>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
 </body>
+
 </html>
