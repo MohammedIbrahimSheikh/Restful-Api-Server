@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=hi, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <style>
         h1 {
             text-align: -webkit-center;
@@ -43,9 +44,37 @@
             <input type="password" id="password" required>
         </div>
         <div>
-            <input type="submit" value="Submit">
+            <input type="button" value="Submit">
         </div>
     </form>
+    <p id ="message"></p>
+    <script>
+        function signUp() {
+
+            let firstname = document.getElementById("firstname").value;
+            let lastname = document.getElementById("lastname").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            axios.post('https://blue-nervous-hen.cyclic.app/user', {
+                "firstName"    : firstname,
+                "lastName"     : lastname,
+                "email"        : email,
+                "password"     : password 
+            })
+                .then(function (response) {
+                    console.log(response.data);
+                    document.querySelector("form").innerHTML="";
+                    document.querySelector("#message").innerHTML = `
+                    <h1>Done!<h1/>
+                    <>${response.data}</>
+                    `
+                })
+                .catch(function (error) {
+                    console.log(error.message);
+                });
+        }
+    </script>
 </body>
 
 </html>
