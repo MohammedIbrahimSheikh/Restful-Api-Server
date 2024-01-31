@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=hi, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <style>
@@ -11,7 +12,9 @@
             text-align: -webkit-center;
             font-size: 48px;
         }
-
+        p{
+            text-align: center;
+        }
         form {
             width: 230px;
             margin: auto;
@@ -26,7 +29,7 @@
 
 <body>
     <h1>Sign Up</h1>
-    <form action="#">
+    <form onsubmit="signUp()">
         <label for="firstname">First Name</label>
         <div>
             <input type="text" name="firstname" id="firstname" required>
@@ -44,17 +47,18 @@
             <input type="password" id="password" required>
         </div>
         <div>
-            <input type="button" value="Submit">
+            <input type="submit" value="Submit">
         </div>
     </form>
     <p id ="message"></p>
     <script>
         function signUp() {
-
             let firstname = document.getElementById("firstname").value;
             let lastname = document.getElementById("lastname").value;
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
+
+            console.log(firstname,lastname,email,password);
 
             axios.post('https://blue-nervous-hen.cyclic.app/user', {
                 "firstName"    : firstname,
@@ -66,8 +70,8 @@
                     console.log(response.data);
                     document.querySelector("form").innerHTML="";
                     document.querySelector("#message").innerHTML = `
-                    <h1>Done!<h1/>
-                    <>${response.data}</>
+                    <h1>Done!</h1>
+                    <p>${response.data}</p>
                     `
                 })
                 .catch(function (error) {
